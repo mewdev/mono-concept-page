@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main class="relative wrapper">
+
+	
+	<section id="otherSection" class="panel bg-black h-screen flex justify-center items-center">	
+		<h1 class="text-white tracking-tight uppercase font-thin text-xl"id="otherSectionHeadline">What if Le&nbsp;&nbsp;&nbsp;&nbsp;<span class="inline-flex rotate-[90deg]">s</span> <span class="inline-flex rotate-[90deg]">s</span>&nbsp;&nbsp;&nbsp;&nbsp;is Everything?</h1>
+	</section>
+
+
+  <section id="transitionSection" class="panel h-screen flex justify-center items-center bg-white">	
+  <a class="font-black uppercase text-8xl"id="transitionSectionLink" href="/about">MONO</a>
+	</section>
+
+
+	</main>
+</Layout>
+
+
+
+
+
+
+<script>
+
+
+import { gsap } from "gsap";
+    
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+let tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".wrapper",
+    scrub: true,
+    pin: true,
+    end: "+=200%",
+    // markers: true
+  }
+});
+
+let panels = gsap.utils.toArray(".panel");
+
+panels.forEach((panel, i) => {
+  
+  if (!i) {
+    tl.set({}, {}, 0.5)
+  } else {
+    tl.to(panel, {
+      yPercent: -100,
+      ease: "none"
+    }, "+=1")
+  }
+})
+
+
+gsap.from("#otherSectionHeadline", {opacity:0, duration: 4, yPercent:100})
+
+
+
+
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+      window.addEventListener('scroll', function() {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+              window.location.href = '/'; 
+          }
+      });
+
+  });
+
+</script>
+
+<style>
+.panel:not(:first-child) {
+  position: absolute;
+  top: 100vh;
+  width: 100%;
+}</style>

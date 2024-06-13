@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+
+	<section id="transitionSection" class="h-screen flex justify-center items-center">	
+		<a class="font-black uppercase text-8xl"id="transitionSectionLink" href="/about">MONO</a>
+	</section>
+
+	</main>
+</Layout>
+
+<script>
+
+import { gsap } from "gsap";
+    
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+</script>
